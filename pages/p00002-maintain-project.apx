@@ -14,9 +14,6 @@ page 2 (
     navigation {
         warnOnUnsavedChanges: false
     }
-    javaScript {
-        functionAndGlobalVariableDeclaration: var htmldb_delete_message='"DELETE_CONFIRM_MSG"';
-    }
     security {
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
@@ -49,7 +46,12 @@ page 2 (
 
     region maintain-project (
         name: Maintain Project
-        type: staticContent
+        type: form
+        source {
+            location: localDatabase
+            tableName: EBA_DEMO_IR_PROJECTS
+            includeRowidColumn: true
+        }
         layout {
             sequence: 10
             slot: wizardBody
@@ -61,6 +63,14 @@ page 2 (
                 t-Region--scrollBody
                 t-Region--noBorder
                 t-Region--hideHeader js-addHiddenHeadingRoleDesc
+            ]
+        }
+        edit {
+            enabled: true
+            allowedOperations: [
+                add
+                update
+                delete
             ]
         }
     )
@@ -89,9 +99,9 @@ page 2 (
             maxLength: 30
         }
         source {
-            type: databaseColumn
-            databaseColumn: ASSIGNED_TO
-            used: always
+            formRegion: @maintain-project
+            column: ASSIGNED_TO
+            dataType: varchar2
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -104,10 +114,6 @@ page 2 (
         label {
             label: Budget
             alignment: left
-        }
-        settings {
-            numberAlignment: end
-            virtualKeyboard: text
         }
         layout {
             sequence: 110
@@ -124,9 +130,9 @@ page 2 (
             maxLength: 255
         }
         source {
-            type: databaseColumn
-            databaseColumn: BUDGET
-            used: always
+            formRegion: @maintain-project
+            column: BUDGET
+            dataType: number
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -139,10 +145,6 @@ page 2 (
         label {
             label: Cost
             alignment: left
-        }
-        settings {
-            numberAlignment: end
-            virtualKeyboard: text
         }
         layout {
             sequence: 100
@@ -159,9 +161,9 @@ page 2 (
             maxLength: 255
         }
         source {
-            type: databaseColumn
-            databaseColumn: COST
-            used: always
+            formRegion: @maintain-project
+            column: COST
+            dataType: number
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -190,9 +192,9 @@ page 2 (
             maxLength: 255
         }
         source {
-            type: databaseColumn
-            databaseColumn: END_DATE
-            used: always
+            formRegion: @maintain-project
+            column: END_DATE
+            dataType: date
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -208,9 +210,9 @@ page 2 (
             slot: regionBody
         }
         source {
-            type: databaseColumn
-            databaseColumn: ID
-            used: always
+            formRegion: @maintain-project
+            column: ID
+            dataType: number
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -246,9 +248,9 @@ page 2 (
             height: 1
         }
         source {
-            type: databaseColumn
-            databaseColumn: PROJECT
-            used: always
+            formRegion: @maintain-project
+            column: PROJECT
+            dataType: varchar2
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -264,9 +266,10 @@ page 2 (
             slot: regionBody
         }
         source {
-            type: databaseColumn
-            databaseColumn: ROWID
-            used: always
+            formRegion: @maintain-project
+            column: ROWID
+            dataType: rowid
+            primaryKey: true
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -295,9 +298,9 @@ page 2 (
             maxLength: 255
         }
         source {
-            type: databaseColumn
-            databaseColumn: START_DATE
-            used: always
+            formRegion: @maintain-project
+            column: START_DATE
+            dataType: date
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -327,9 +330,9 @@ page 2 (
             height: 1
         }
         source {
-            type: databaseColumn
-            databaseColumn: STATUS
-            used: always
+            formRegion: @maintain-project
+            column: STATUS
+            dataType: varchar2
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -361,9 +364,9 @@ page 2 (
             maxLength: 255
         }
         source {
-            type: databaseColumn
-            databaseColumn: TASK_NAME
-            used: always
+            formRegion: @maintain-project
+            column: TASK_NAME
+            dataType: varchar2
         }
         security {
             sessionStateProtection: checksumRequiredSessionLevel
@@ -384,8 +387,16 @@ page 2 (
             templateOptions: #DEFAULT#
         }
         behavior {
-            action: definedByDynamicAction
+            action: triggerAction
         }
+
+        triggerAction native-dialog-cancel (
+            action: cancelDialog
+            execution {
+                sequence: 10
+            }
+        )
+
     )
 
     button create (
@@ -427,11 +438,13 @@ page 2 (
             ]
         }
         behavior {
-            action: redirectUrl
-            targetUrl: javascript:apex.confirm(htmldb_delete_message,'DELETE');
             executeValidations: false
             warnOnUnsavedChanges: doNotCheck
             databaseAction: delete
+            requiresConfirmation: true
+        }
+        confirmation {
+            message: &APP_TEXT$DELETE_MSG!RAW.
         }
         serverSideCondition {
             type: itemIsNotNull
@@ -462,27 +475,6 @@ page 2 (
         }
     )
 
-    dynamicAction cancel-modal (
-        name: Cancel Modal
-        execution {
-            sequence: 10
-        }
-        when {
-            event: click
-            selectionType: button
-            button: @cancel
-        }
-
-        action native-dialog-cancel (
-            action: cancelDialog
-            execution {
-                sequence: 10
-                fireOnInit: false
-            }
-        )
-
-    )
-
     process close-modal (
         name: Close Modal
         type: closeDialog
@@ -499,12 +491,8 @@ page 2 (
 
     process fetch-row-from-eba-demo-ir-projects (
         name: Fetch Row from EBA_DEMO_IR_PROJECTS
-        type: autoRowFetch
-        source {
-            tableName: EBA_DEMO_IR_PROJECTS
-            pkColumn: ROWID
-            pkItem: P2_ROWID
-        }
+        type: formInitialization
+        formRegion: @maintain-project
         execution {
             sequence: 10
             point: afterHeader
@@ -516,11 +504,10 @@ page 2 (
 
     process process-row-of-eba-demo-ir-projects (
         name: Process Row of EBA_DEMO_IR_PROJECTS
-        type: autoRowProcessing
+        type: formAutoRowProcessing
+        formRegion: @maintain-project
         target {
-            tableName: EBA_DEMO_IR_PROJECTS
-            pkColumn: ROWID
-            pkItem: P2_ROWID
+            returnPksAfterInsert: false
         }
         execution {
             sequence: 20

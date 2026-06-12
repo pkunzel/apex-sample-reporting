@@ -303,10 +303,6 @@ page 40 (
                 heading: Cost Vs Budget
                 alignment: end
             }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
-            }
             layout {
                 sequence: 120
                 columnAlignment: end
@@ -321,7 +317,7 @@ page 40 (
         )
 
         column FIRST_START_DATE (
-            type: datePickerJquery
+            type: datePicker
             heading {
                 heading: First Start Date
                 alignment: center
@@ -330,6 +326,9 @@ page 40 (
                 sequence: 30
                 columnAlignment: center
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             source {
                 databaseColumn: FIRST_START_DATE
                 dataType: date
@@ -337,7 +336,7 @@ page 40 (
         )
 
         column LAST_END_DATE (
-            type: datePickerJquery
+            type: datePicker
             heading {
                 heading: Last End Date
                 alignment: center
@@ -357,10 +356,6 @@ page 40 (
             heading {
                 heading: On Hold
                 alignment: end
-            }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
             }
             layout {
                 sequence: 80
@@ -454,6 +449,9 @@ page 40 (
             layout {
                 sequence: 10
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             link {
                 target: {
                     page: 17
@@ -489,6 +487,9 @@ page 40 (
                 sequence: 20
                 columnAlignment: end
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             link {
                 target: {
                     page: 17
@@ -515,10 +516,6 @@ page 40 (
                 heading: Total Budget
                 alignment: end
             }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
-            }
             layout {
                 sequence: 110
                 columnAlignment: end
@@ -537,10 +534,6 @@ page 40 (
             heading {
                 heading: Total Cost
                 alignment: end
-            }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
             }
             layout {
                 sequence: 100

@@ -3,7 +3,7 @@ theme universal-theme (
     themeNumber: 42
     baseTheme: ut-26.1
     style {
-        currentThemeStyle: @/iris
+        currentThemeStyle: @sample-reports-iris
     }
     javaScript {
         fileUrls: [
@@ -50,5 +50,22 @@ theme universal-theme (
         filePrefix: #APEX_FILES#themes/theme_42/26.1/
         identifier: UNIVERSAL_THEME
     }
+
+    style sample-reports-iris (
+        name: Sample Reports Iris
+        css {
+            fileUrls: #APEX_FILES#libraries/oracle-fonts/oraclesans-apex#MIN#.css?v=#APEX_VERSION#
+        }
+        themeRollerAttributes {
+            inputParameterFileUrls: #THEME_FILES#less/theme/Iris.less
+            outputCssFileUrl: #THEME_DB_FILES#8405339918619654706.css
+            jsonConfig: "{\"classes\":[],\"vars\":{\"@g_Accent-Pillar\":\"pine\",\"@g_Nav_Style\":\"dark\",\"@g_FontFamily\":\"oracle_sans\",\"@Head-Height\":\"60px\",\"@Nav-Exp\":\"280px\"},\"customCSS\":\"\",\"useCustomLess\":\"N\"}"
+        }
+        advanced {
+            endUserCanPick: true
+            accessibilityTested: true
+        }
+    )
+
 )
 

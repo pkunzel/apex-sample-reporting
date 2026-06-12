@@ -151,7 +151,11 @@ page 15 (
             whenNoDataFound: No data found.
             whenMoreDataFound: This query returns more than #MAX_ROW_COUNT# rows, please filter your data to ensure complete results.
         }
+        searchBar {
+            rowsPerPageSelector: true
+        }
         actionsMenu {
+            rowsPerPage: false
             savePublicReport: true
         }
         download {

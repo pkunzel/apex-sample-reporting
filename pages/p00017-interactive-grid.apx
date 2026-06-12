@@ -392,10 +392,6 @@ page 17 (
                 heading: Available Budget
                 alignment: end
             }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
-            }
             layout {
                 sequence: 130
                 columnAlignment: end
@@ -419,10 +415,6 @@ page 17 (
                 heading: Budget
                 alignment: end
             }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
-            }
             layout {
                 sequence: 120
                 columnAlignment: end
@@ -445,10 +437,6 @@ page 17 (
                 heading: Cost
                 alignment: end
             }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
-            }
             layout {
                 sequence: 110
                 columnAlignment: end
@@ -466,7 +454,7 @@ page 17 (
         )
 
         column END_DATE (
-            type: datePickerJquery
+            type: datePicker
             heading {
                 heading: End date
                 alignment: center
@@ -536,7 +524,7 @@ page 17 (
         )
 
         column START_DATE (
-            type: datePickerJquery
+            type: datePicker
             heading {
                 heading: Start date
                 alignment: center

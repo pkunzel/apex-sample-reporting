@@ -133,7 +133,11 @@ page 7 (
             whenNoDataFound: No data found.
             whenMoreDataFound: This query returns more than #MAX_ROW_COUNT# rows, please filter your data to ensure complete results.
         }
+        searchBar {
+            rowsPerPageSelector: true
+        }
         actionsMenu {
+            rowsPerPage: false
             savePublicReport: true
         }
         download {
@@ -372,6 +376,9 @@ page 7 (
             layout {
                 sequence: 1
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             link {
                 target: {
                     page: 1
@@ -403,6 +410,9 @@ page 7 (
             layout {
                 sequence: 2
                 columnAlignment: end
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             appearance {
                 formatMask: 999G999G999G999G999G990

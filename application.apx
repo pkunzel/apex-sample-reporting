@@ -64,7 +64,6 @@ app SAMPLE-REPORTING (
     }
     advanced {
         passEcid: false
-        modernizeApp: true
         copyrightBanner:
             ```
             Name: #APP_NAME#

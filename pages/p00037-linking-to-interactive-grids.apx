@@ -348,10 +348,6 @@ page 37 (
                 heading: Available Budget
                 alignment: end
             }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
-            }
             layout {
                 sequence: 90
                 columnAlignment: end
@@ -370,10 +366,6 @@ page 37 (
             heading {
                 heading: Budget
                 alignment: end
-            }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
             }
             layout {
                 sequence: 80
@@ -397,10 +389,6 @@ page 37 (
                 heading: Cost
                 alignment: end
             }
-            settings {
-                numberAlignment: end
-                virtualKeyboard: text
-            }
             layout {
                 sequence: 70
                 columnAlignment: end
@@ -418,7 +406,7 @@ page 37 (
         )
 
         column END_DATE (
-            type: datePickerJquery
+            type: datePicker
             heading {
                 heading: End Date
                 alignment: center
@@ -441,6 +429,9 @@ page 37 (
             layout {
                 sequence: 10
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             validation {
                 maxLength: 30
             }
@@ -459,7 +450,7 @@ page 37 (
         )
 
         column START_DATE (
-            type: datePickerJquery
+            type: datePicker
             heading {
                 heading: Start Date
                 alignment: center
@@ -467,6 +458,9 @@ page 37 (
             layout {
                 sequence: 30
                 columnAlignment: center
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             source {
                 databaseColumn: START_DATE
@@ -506,6 +500,9 @@ page 37 (
             }
             layout {
                 sequence: 20
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             validation {
                 maxLength: 255

@@ -217,6 +217,9 @@ page 5 (
             layout {
                 sequence: 2
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             sorting {
                 defaultSequence: 1
             }
@@ -261,6 +264,9 @@ page 5 (
             }
             layout {
                 sequence: 3
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             sorting {
                 defaultSequence: 2

@@ -119,7 +119,11 @@ page 19 (
             whenNoDataFound: No data found.
             whenMoreDataFound: The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.
         }
+        searchBar {
+            rowsPerPageSelector: true
+        }
         actionsMenu {
+            rowsPerPage: false
             savePublicReport: true
         }
         download {

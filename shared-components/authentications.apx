@@ -7,3 +7,16 @@ authentication apex-auth (
     }
 )
 
+authentication no-auth (
+    name: No Auth
+    type: noAuth
+    settings {
+        username: Public User
+    }
+)
+
+authentication open-door-access (
+    name: Open Door Access
+    type: openDoorCredentials
+)
+
