@@ -255,6 +255,9 @@ page 19 (
             layout {
                 sequence: 1
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             source {
                 dataType: STRING
             }
@@ -286,6 +289,9 @@ page 19 (
             }
             layout {
                 sequence: 2
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             source {
                 dataType: STRING
@@ -458,4 +464,3 @@ page 19 (
     )
 
 )
-

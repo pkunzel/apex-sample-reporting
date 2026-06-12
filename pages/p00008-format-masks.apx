@@ -212,6 +212,9 @@ page 8 (
             layout {
                 sequence: 1
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             source {
                 dataType: STRING
             }
@@ -227,6 +230,9 @@ page 8 (
             }
             layout {
                 sequence: 2
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             appearance {
                 formatMask: SINCE
@@ -341,4 +347,3 @@ page 8 (
     )
 
 )
-

@@ -233,6 +233,9 @@ page 20 (
             layout {
                 sequence: 1
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             source {
                 dataType: STRING
             }
@@ -248,6 +251,9 @@ page 20 (
             }
             layout {
                 sequence: 3
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             source {
                 dataType: DATE
@@ -280,6 +286,9 @@ page 20 (
             }
             layout {
                 sequence: 2
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             source {
                 dataType: STRING
@@ -388,4 +397,3 @@ page 20 (
     )
 
 )
-

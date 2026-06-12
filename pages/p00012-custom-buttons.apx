@@ -306,6 +306,9 @@ page 12 (
             layout {
                 sequence: 3
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             source {
                 dataType: STRING
             }
@@ -478,4 +481,3 @@ page 12 (
     )
 
 )
-

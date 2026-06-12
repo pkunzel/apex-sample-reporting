@@ -238,6 +238,9 @@ page 3 (
             layout {
                 sequence: 4
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
         )
 
         column STATUS (
@@ -410,4 +413,3 @@ page 3 (
     )
 
 )
-

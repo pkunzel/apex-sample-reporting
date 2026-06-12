@@ -367,6 +367,9 @@ page 42 (
             layout {
                 sequence: 22
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             sorting {
                 defaultSequence: 1
             }
@@ -401,6 +404,9 @@ page 42 (
                 sequence: 42
                 columnAlignment: center
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
         )
 
         column STATUS (
@@ -423,6 +429,9 @@ page 42 (
             }
             layout {
                 sequence: 32
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             link {
                 target: {
@@ -492,4 +501,3 @@ page 42 (
     )
 
 )
-

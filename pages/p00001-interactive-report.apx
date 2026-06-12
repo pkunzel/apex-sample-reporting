@@ -354,6 +354,9 @@ page 1 (
             advanced {
                 endUserAlias: D
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
         )
 
         column STATUS (
@@ -902,4 +905,3 @@ page 1 (
     )
 
 )
-

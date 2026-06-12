@@ -351,6 +351,9 @@ page 11 (
             layout {
                 sequence: 3
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             source {
                 dataType: STRING
             }
@@ -366,6 +369,9 @@ page 11 (
             }
             layout {
                 sequence: 5
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             source {
                 dataType: DATE
@@ -398,6 +404,9 @@ page 11 (
             }
             layout {
                 sequence: 4
+            }
+            accessibility {
+                valueIdentifiesRow: true
             }
             source {
                 dataType: STRING
@@ -678,4 +687,3 @@ page 11 (
     )
 
 )
-

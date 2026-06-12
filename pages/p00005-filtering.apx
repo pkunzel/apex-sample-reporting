@@ -243,6 +243,9 @@ page 5 (
             layout {
                 sequence: 4
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
         )
 
         column STATUS (
@@ -514,4 +517,3 @@ page 5 (
     )
 
 )
-

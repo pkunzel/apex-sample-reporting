@@ -185,6 +185,9 @@ page 23 (
             layout {
                 sequence: 1
             }
+            accessibility {
+                valueIdentifiesRow: true
+            }
             sorting {
                 sortable: false
             }
@@ -263,4 +266,3 @@ page 23 (
     )
 
 )
-
