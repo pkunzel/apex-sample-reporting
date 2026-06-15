@@ -11,6 +11,7 @@ page 101 (
         warnOnUnsavedChanges: false
     }
     security {
+        authorizationScheme: mustNotBePublicUser
         authentication: public
         pageAccessProtection: noArgumentsSupported
         formAutoComplete: false

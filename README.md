@@ -1,79 +1,43 @@
 # Sample Reporting
 
-Sample Reporting is an Oracle APEX sample application that demonstrates native APEX reporting features and common SQL reporting techniques. It uses a small project/task data set, the classic EMP/DEPT sample data, and a PL/SQL package used by one of the advanced SQL examples.
+## Overview
+
+Sample Reporting is an Oracle APEX sample application that demonstrates native APEX reporting capabilities and SQL reporting patterns. It uses project/task sample data, EMP/DEPT sample tables, cards, faceted search, classic reports, interactive reports, interactive grids, and PL/SQL pipelined functions to show common reporting techniques in a working app.
 
 ## Requirements and Explanation
 
-This is an Oracle APEX 26.1 application tested on an Oracle Database 26ai environment.
+This repository contains an Oracle APEX 26.1 application in APEXlang split-export format. The application definition is separated across `application.apx`, `pages/`, `shared-components/`, `workspace-components/`, and `supporting-objects/`.
 
-The export files in this repository are written in APEXlang format, not as a single traditional SQL export. The application is split across `application.apx`, `pages/`, `shared-components/`, `workspace-components/`, and `supporting-objects/`.
+To import and run the app, you need:
+
+- Oracle APEX 26.1 or a compatible APEX environment.
+- An Oracle Database schema where the supporting objects can be installed.
+- SQLcl with APEXlang support, or an APEX import workflow that accepts a zipped split application export.
+- Privileges to create tables, indexes, triggers, procedures, packages, types, and views in the parsing schema.
+
+The application uses `mustNotBePublicUser` as the page-level authorization scheme across the exported pages.
 
 ## Installation Guide
 
-To install the application in your own environment:
+1. Clone or download this repository.
+2. Import the APEX application from this folder with SQLcl/APEXlang, or zip the full application directory and import it through Oracle APEX Application Builder.
+3. During import, choose to install supporting objects when prompted.
+4. Confirm that the install scripts create the demo tables, seed data, trigger, procedure, and PL/SQL package.
+5. Run the application and sign in through the login page.
 
-1. Use SQLcl with APEXlang support to import the application from this folder.
-2. Or zip the full application directory and import it through the Oracle APEX Application Builder import feature.
-3. During import, install the supporting objects when prompted so the demo tables, sample data, and PL/SQL package are created.
-
-The application includes supporting object installation, upgrade, and deinstallation scripts.
+If the app was previously installed, the supporting-object upgrade flow can refresh data, create missing EMP/DEPT tables, rebuild the pipelined-function package, and remove obsolete package/type objects.
 
 ## What Does the App Do?
 
-The app is a reporting showcase for Oracle APEX. It demonstrates how to build and configure interactive reports, interactive grids, classic reports, cards, faceted search, drill-down reports, report linking, format masks, highlighting, bind-variable filtering, and SQL-driven report examples.
+The app is a reporting showcase for Oracle APEX. It demonstrates:
 
-The home page presents the main reporting areas:
-
-- **Interactive Report**: Demonstrates end-user report customization, searching, sorting, filtering, downloads, detail view, saved reports, chart/group-by/pivot views, report highlighting, and drill-through editing.
-- **Interactive Grid**: Demonstrates editable grid reporting with add, update, delete, save, search, actions menu, downloads, and saved grid views.
-- **Classic Report**: Demonstrates tabular report output with page-item filtering through bind variables.
-- **Faceted Search**: Demonstrates a faceted search region filtering a classic report by search text, project, assigned user, status, cost range, and budget range.
-- **Cards**: Demonstrates a cards region for presenting project/task information in compact blocks.
-- **Use Cases**: Demonstrates practical APEX reporting techniques.
-- **SQL Examples**: Demonstrates SQL syntax useful in reports.
-- **Analytic Functions**: Demonstrates analytic SQL functions in report pages.
-
-### Report Use Cases
-
-The Use Cases area includes examples for:
-
-- Drill-down links from interactive reports and interactive grids.
-- Built-in interactive report highlighting.
-- Calling the Interactive Report Query API and using the current report query to drive another visualization.
-- Linking to interactive reports and grids with reset, clear, saved report, and filter parameters.
-- Filtering classic reports from page items and side-bar controls.
-- Bind variables in report SQL.
-- Column format masks for dates, numbers, currency, and computed values.
-- Non-tabular classic report templates, including comment-bubble style output.
-- CSS-based custom buttons in report cells.
-- Reporting from Oracle APEX collections.
-
-### SQL and Analytic Examples
-
-The SQL Examples and Analytic Functions areas include report pages for:
-
-- `CASE` expressions.
-- `CONNECT BY` hierarchy queries.
-- `GROUP BY` aggregate reporting.
-- Inline views.
-- Pipelined table functions.
-- `PIVOT`.
-- Regular expressions.
-- `SOUNDEX`.
-- String functions such as `SUBSTR`, `INSTR`, `NVL`, `NVL2`, `COALESCE`, `REPLACE`, and `TRIM`.
-- `LEAD` and `LAG`.
-- `LISTAGG`.
-- `RANK` and `DENSE_RANK`.
-- `RATIO_TO_REPORT`.
-- `ROW_NUMBER`.
-- Top-N queries.
-
-### Administration
-
-The Administration section includes:
-
-- **Manage Sample Data**: Recreates or removes the sample data used by the reporting examples.
-- **Application Theme Style**: Lets administrators change the application UI theme style.
+- Interactive reports with searching, sorting, filtering, saved reports, charts, group-by views, pivot views, detail views, highlighting, download options, and drill-down links.
+- Interactive grids with editable rows, grid actions, report state links, and drill-down examples.
+- Classic reports with bind-variable filtering, format masks, custom templates, custom button-style cells, and collection-backed data.
+- Cards and faceted search over the same project/task data.
+- SQL examples for `CASE`, inline views, `GROUP BY`, `CONNECT BY`, `PIVOT`, regular expressions, string functions, `SOUNDEX`, and top-N queries.
+- Analytic SQL examples for `LEAD`, `LAG`, `LISTAGG`, `RANK`, `DENSE_RANK`, `ROW_NUMBER`, and `RATIO_TO_REPORT`.
+- Administration pages for sample data maintenance and application theme style selection.
 
 ## Page Map
 
@@ -87,7 +51,7 @@ The Administration section includes:
 | 6 | Drill Down IR | Interactive report with drill-down column links. |
 | 7 | Highlighting | Interactive report highlighting example. |
 | 8 | Format Masks | Report formatting examples. |
-| 9 | Use Cases | Card/list entry point for reporting use cases. |
+| 9 | Use Cases | Entry point for reporting use cases. |
 | 10 | Home | Main entry page for report example categories. |
 | 11 | Interactive Report Query API | Uses APEX runtime APIs around interactive report filters and query text. |
 | 12 | Custom Buttons | Interactive report with button-like report cells. |
@@ -124,34 +88,37 @@ The Administration section includes:
 
 ## Supporting Objects
 
-The supporting objects create and manage the sample schema objects used by the app.
+The supporting objects create the schema objects and sample data used by the reporting examples.
 
 ### Installed Objects
 
 - `EBA_DEMO_IR_PROJECTS`: Main project/task table used by the report, grid, cards, and faceted search examples.
-- `BIU_EBA_DEMO_IR_PROJECTS`: Trigger that generates IDs, increments `ROW_VERSION_NUMBER`, and validates that `START_DATE` is not after `END_DATE`.
+- `EBA_DEMO_IR_PROJECTS_PK`: Unique index on `EBA_DEMO_IR_PROJECTS.ID`.
+- `BIU_EBA_DEMO_IR_PROJECTS`: Trigger that generates IDs, maintains `ROW_VERSION_NUMBER`, and validates start/end dates.
 - `EBA_DEMO_IR_DEPT`: Department sample table.
-- `EBA_DEMO_IR_EMP`: Employee sample table with a self-referencing manager foreign key.
+- `EBA_DEMO_IR_EMP`: Employee sample table with manager and department relationships.
+- `EBA_DEMO_IR_EMP_1`: Index on `EBA_DEMO_IR_EMP.MGR`.
+- `EBA_DEMO_IR_EMP_2`: Index on `EBA_DEMO_IR_EMP.DEPTNO`.
 - `EBA_DEMO_IR_DATA`: Procedure that reloads project/task and EMP/DEPT sample data.
-- `EBA_DEMO_IR_PKG`: PL/SQL package containing pipelined functions used to report page-link reference counts inside the current APEX application.
+- `EBA_DEMO_IR_PKG`: Package with pipelined functions used by the page-link reference report.
 
 ### Install Scripts
 
-- `set-plscope-settings.sql`
-- `create-table.sql`
-- `emp-and-dept-tables.sql`
-- `pipelined-function-package.sql`
-- `load-data.sql`
+- `set-plscope-settings.sql`: Enables PL/Scope settings for package compilation.
+- `create-table.sql`: Creates `EBA_DEMO_IR_PROJECTS`, its primary-key index, and row trigger.
+- `emp-and-dept-tables.sql`: Creates the EMP/DEPT sample tables, relationship, and indexes.
+- `pipelined-function-package.sql`: Creates `EBA_DEMO_IR_PKG`.
+- `load-data.sql`: Creates `EBA_DEMO_IR_DATA` and loads the sample data.
 
 ### Upgrade Scripts
 
-- `create-dept-table.sql`
-- `create-emp-table.sql`
-- `update-data-script.sql`
-- `refresh-data.sql`
-- `pipelined-function-package.sql`
-- `drop-old-objects.sql`
+- `create-dept-table.sql`: Creates `EBA_DEMO_IR_DEPT` when it is missing.
+- `create-emp-table.sql`: Creates `EBA_DEMO_IR_EMP` when it is missing.
+- `update-data-script.sql`: Recreates the sample data loading procedure.
+- `refresh-data.sql`: Refreshes installed sample data.
+- `pipelined-function-package.sql`: Rebuilds `EBA_DEMO_IR_PKG`.
+- `drop-old-objects.sql`: Removes obsolete filtering packages and types from older app versions.
 
 ### Deinstall
 
-The supporting object definition references `deinstall-script.sql`, which removes the objects created for the sample application.
+The deinstall script `deinstall-script.sql` removes the demo trigger, tables, procedure, package, and application image files created for the sample application.

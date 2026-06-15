@@ -11,6 +11,7 @@ page 34 (
         warnOnUnsavedChanges: false
     }
     security {
+        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }

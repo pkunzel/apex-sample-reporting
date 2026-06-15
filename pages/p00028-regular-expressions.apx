@@ -14,6 +14,7 @@ page 28 (
         inline: .highlight {background-color: yellow;}
     }
     security {
+        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
