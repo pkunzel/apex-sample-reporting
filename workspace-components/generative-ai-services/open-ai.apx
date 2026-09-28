@@ -1,0 +1,20 @@
+genAIService open_ai (
+    name: OpenAI
+    provider: openai
+    endpointUrl {
+        url: https://api.openai.com/v1
+    }
+    authentication {
+        credentials: @credentials_for_open_ai
+    }
+    additionalData {
+        attributes: "{ \"temperature\" : 1 }"
+    }
+    appBuilder {
+        usedByAppBuilder: true
+    }
+    advanced {
+        modelName: gpt-5.6
+    }
+)
+

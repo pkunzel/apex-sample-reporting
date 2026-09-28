@@ -10,7 +10,6 @@ page 15 (
         warnOnUnsavedChanges: false
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
@@ -395,9 +394,6 @@ page 15 (
             layout {
                 sequence: 1
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             link {
                 target: {
                     page: 1
@@ -641,3 +637,4 @@ page 15 (
     )
 
 )
+

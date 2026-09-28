@@ -69,7 +69,6 @@ page 10 (
             ```
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }

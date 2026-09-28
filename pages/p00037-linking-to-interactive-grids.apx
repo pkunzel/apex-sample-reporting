@@ -11,7 +11,6 @@ page 37 (
         warnOnUnsavedChanges: false
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
@@ -430,9 +429,6 @@ page 37 (
             layout {
                 sequence: 10
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             validation {
                 maxLength: 30
             }
@@ -459,9 +455,6 @@ page 37 (
             layout {
                 sequence: 30
                 columnAlignment: center
-            }
-            accessibility {
-                valueIdentifiesRow: true
             }
             source {
                 databaseColumn: START_DATE
@@ -501,9 +494,6 @@ page 37 (
             }
             layout {
                 sequence: 20
-            }
-            accessibility {
-                valueIdentifiesRow: true
             }
             validation {
                 maxLength: 255

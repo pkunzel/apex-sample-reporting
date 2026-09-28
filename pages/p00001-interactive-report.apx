@@ -10,7 +10,6 @@ page 1 (
         warnOnUnsavedChanges: false
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
@@ -120,18 +119,15 @@ page 1 (
             whenNoDataFound: No data found.
             whenMoreDataFound: This query returns more than #MAX_ROW_COUNT# rows, please filter your data to ensure complete results.
         }
+        genAI {
+            naturalLanguageSupport: true
+        }
         searchBar {
             rowsPerPageSelector: true
         }
         actionsMenu {
             rowsPerPage: false
             savePublicReport: true
-        }
-        download {
-            formats: [
-                csv
-                html
-            ]
         }
         detailView {
             show: true
@@ -311,9 +307,6 @@ page 1 (
             layout {
                 sequence: 2
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             source {
                 dataType: STRING
             }
@@ -355,9 +348,6 @@ page 1 (
             advanced {
                 endUserAlias: D
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
         )
 
         column STATUS (
@@ -384,9 +374,6 @@ page 1 (
             layout {
                 sequence: 3
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             source {
                 dataType: STRING
             }
@@ -394,6 +381,11 @@ page 1 (
                 endUserAlias: C
             }
         )
+
+        page {
+            borderWidth: 0.5
+            borderColor: #666666
+        }
 
         savedReport 19091460 (
             visibility: primaryDefault
@@ -906,3 +898,4 @@ page 1 (
     )
 
 )
+

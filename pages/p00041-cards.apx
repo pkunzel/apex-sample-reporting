@@ -10,7 +10,6 @@ page 41 (
         cursorFocus: doNotFocusCursor
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }

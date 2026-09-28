@@ -10,7 +10,6 @@ page 40 (
         warnOnUnsavedChanges: false
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
@@ -327,9 +326,6 @@ page 40 (
                 sequence: 30
                 columnAlignment: center
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             source {
                 databaseColumn: FIRST_START_DATE
                 dataType: date
@@ -450,9 +446,6 @@ page 40 (
             layout {
                 sequence: 10
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             link {
                 target: {
                     page: 17
@@ -487,9 +480,6 @@ page 40 (
             layout {
                 sequence: 20
                 columnAlignment: end
-            }
-            accessibility {
-                valueIdentifiesRow: true
             }
             link {
                 target: {

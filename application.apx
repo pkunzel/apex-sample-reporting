@@ -2,6 +2,9 @@ app SAMPLE-REPORTING (
     name: Sample Reporting
     version: 26.1.0
     group: @sample-apps
+    genAI {
+        service: @open_ai
+    }
     logo {
         type: text
         text: Sample Reporting

@@ -11,7 +11,6 @@ page 18 (
         warnOnUnsavedChanges: false
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
@@ -274,9 +273,6 @@ page 18 (
             layout {
                 sequence: 3
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             source {
                 dataType: STRING
             }
@@ -292,9 +288,6 @@ page 18 (
             }
             layout {
                 sequence: 5
-            }
-            accessibility {
-                valueIdentifiesRow: true
             }
             source {
                 dataType: DATE
@@ -327,9 +320,6 @@ page 18 (
             }
             layout {
                 sequence: 4
-            }
-            accessibility {
-                valueIdentifiesRow: true
             }
             source {
                 dataType: STRING
@@ -514,3 +504,4 @@ page 18 (
     )
 
 )
+

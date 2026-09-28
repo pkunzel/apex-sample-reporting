@@ -10,7 +10,6 @@ page 17 (
         warnOnUnsavedChanges: false
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
@@ -495,9 +494,6 @@ page 17 (
             layout {
                 sequence: 50
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             source {
                 databaseColumn: PROJECT
                 dataType: varchar2
@@ -537,9 +533,6 @@ page 17 (
                 sequence: 70
                 columnAlignment: center
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             source {
                 databaseColumn: START_DATE
                 dataType: date
@@ -575,9 +568,6 @@ page 17 (
             }
             layout {
                 sequence: 60
-            }
-            accessibility {
-                valueIdentifiesRow: true
             }
             source {
                 databaseColumn: TASK_NAME
@@ -661,3 +651,4 @@ page 17 (
     )
 
 )
+

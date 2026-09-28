@@ -11,10 +11,9 @@ page 27 (
         warnOnUnsavedChanges: false
     }
     css {
-        inline: .highlight {background-color: yellow;}
+        inline: ".highlight {background-color: yellow;}"
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }

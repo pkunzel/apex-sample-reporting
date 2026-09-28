@@ -11,7 +11,6 @@ page 23 (
         warnOnUnsavedChanges: false
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
@@ -186,9 +185,6 @@ page 23 (
             layout {
                 sequence: 1
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             sorting {
                 sortable: false
             }
@@ -267,3 +263,4 @@ page 23 (
     )
 
 )
+

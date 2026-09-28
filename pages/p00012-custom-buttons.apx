@@ -23,7 +23,6 @@ page 12 (
             ```
     }
     security {
-        authorizationScheme: mustNotBePublicUser
         pageAccessProtection: argumentsMustHaveChecksum
         formAutoComplete: false
     }
@@ -307,9 +306,6 @@ page 12 (
             layout {
                 sequence: 3
             }
-            accessibility {
-                valueIdentifiesRow: true
-            }
             source {
                 dataType: STRING
             }
@@ -482,3 +478,4 @@ page 12 (
     )
 
 )
+
